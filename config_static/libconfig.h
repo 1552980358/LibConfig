@@ -1,0 +1,6 @@
+#ifndef CONFIG_STATIC_LIBCONFIG_H
+#define CONFIG_STATIC_LIBCONFIG_H
+
+void hello();
+
+#endif //CONFIG_STATIC_LIBCONFIG_H
