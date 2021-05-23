@@ -1,6 +1,14 @@
-#ifndef CONFIG_STATIC_LIBCONFIG_H
-#define CONFIG_STATIC_LIBCONFIG_H
+#ifndef LIBCONFIG_LIBCONFIG_H
+#define LIBCONFIG_LIBCONFIG_H
 
-void hello();
+#include "config_file.h"
 
-#endif //CONFIG_STATIC_LIBCONFIG_H
+config_file *read_config(const char *);
+
+config_file *read_config(const string &);
+
+config_file *read_config(const char *, const bool &);
+
+config_file *read_config(const string &, const bool &);
+
+#endif //LIBCONFIG_LIBCONFIG_H
