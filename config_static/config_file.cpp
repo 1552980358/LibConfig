@@ -13,7 +13,7 @@ string get_config_part_name(const string &);
 string get_config_part_value_title(const string &);
 string get_config_part_value_value(const string &);
 string cut_value(const string &);
-const int &count_config_parts(config_part *);
+int count_config_parts(config_part *);
 
 // Constructors
 config_file::config_file(const bool &read) { if (read) read_file(); }
@@ -70,8 +70,18 @@ config_part *config_file::get_config_part(const string &title) {
     return nullptr;
 }
 
+int config_file::get_config_part_size() {
+    _config_parts_size = count_config_parts(_config_parts);
+    return _config_parts_size;
+}
+
 string *config_file::get_config_part_titles() {
-    auto current = _config_parts;
+    get_config_part_size();
+    auto *titles = (string *) malloc(_config_parts_size * sizeof(string));
+    for (int i = 0; i < _config_parts_size; ++i) {
+        titles[i] = _config_parts[i].get_title();
+    }
+    return titles;
 }
 
 // Static .cpp internal functions
@@ -133,6 +143,12 @@ string cut_value(const string &str) {
     return tmp;
 }
 
-const int &count_config_parts(config_part *part) {
-
+int count_config_parts(config_part *part) {
+    auto count = 0;
+    auto *current = part;
+    while (part) {
+        count++;
+        current->get_next();
+    }
+    return count;
 }

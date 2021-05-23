@@ -14,6 +14,8 @@ private:
 
     config_part *_config_parts = nullptr;
 
+    int _config_parts_size = 0;
+
 public:
 
     explicit config_file(const bool &);
@@ -37,6 +39,8 @@ public:
     void read_file();
 
     config_part *get_config_part(const string &);
+
+    int get_config_part_size();
 
     string *get_config_part_titles();
 
