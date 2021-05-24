@@ -5,6 +5,7 @@ using std::ios;
 using std::getline;
 #include <fstream>
 using std::ifstream;
+#include "utils.h"
 
 // Static .cpp internal functions prototypes
 config_part *analysis_line(const string &str, config_part *part);
@@ -97,7 +98,7 @@ config_part *analysis_line(const string &str, config_part *part) {
 }
 
 bool is_new_part(const string &str) {
-    return str.starts_with('[') && str.ends_with(']');
+    return str_starts_with(str, '[') && str_ends_with(str, ']');
 }
 
 string get_config_part_name(const string &str) {
@@ -120,7 +121,7 @@ string get_config_part_value_value(const string &str) {
 
 string cut_value(const string &str) {
     auto tmp = string(str);
-    if (str.starts_with(' ')) {
+    if (str_starts_with(str, ' ')) {
         int i = 1;
         while (i < tmp.length()) {
             if (tmp[i] != ' ') {
@@ -130,7 +131,7 @@ string cut_value(const string &str) {
             i++;
         }
     }
-    if (str.ends_with(' ')) {
+    if (str_ends_with(str, ' ')) {
         int i = (int) tmp.length();
         while (i > 0) {
             if (str[i] != ' ') {

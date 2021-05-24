@@ -7,4 +7,5 @@ add_library(config_static
         libconfig.cpp libconfig.h
         config_part.cpp config_part.h
         config_file.cpp config_file.h
+        utils.cpp utils.h
         )
