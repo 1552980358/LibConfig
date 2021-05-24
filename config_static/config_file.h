@@ -46,7 +46,4 @@ public:
 
 };
 
-
-void *read_c();
-
 #endif //LIBCONFIG_CONFIG_FILE_H
