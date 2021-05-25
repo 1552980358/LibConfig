@@ -42,7 +42,7 @@ config_part *config_file::read() {
     if (!_path) {
         return nullptr;
     }
-    ifstream file_stream(*_path, ios::in);
+    ifstream file_stream(*_path);
     if (!file_stream) {
         return nullptr;
     }
