@@ -59,8 +59,11 @@ string *config_part::get_value(const int &index) {
 }
 
 config_part *get_head(config_part *part) {
+    if (!part) {
+        return nullptr;
+    }
     auto *tmp = part;
-    while (tmp && tmp->get_prev()) {
+    while (tmp->get_prev()) {
         tmp = tmp->get_prev();
     }
     return tmp;
