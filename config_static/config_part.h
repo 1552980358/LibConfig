@@ -2,8 +2,9 @@
 #define LIBCONFIG_CONFIG_PART_H
 
 #include <string>
-
 using std::string;
+
+#include "config_value.h"
 
 class config_part {
 
@@ -11,15 +12,11 @@ private:
 
     string _title{};
 
+    config_value *_values = nullptr;
+
     config_part *_prev = nullptr;
 
     config_part *_next = nullptr;
-
-    string *_titles = nullptr;
-
-    string *_values = nullptr;
-
-    int _number = 0;
 
 public:
 

@@ -8,4 +8,5 @@ add_library(config_static
         config_part.cpp config_part.h
         config_file.cpp config_file.h
         utils.cpp utils.h
+        config_value.cpp config_value.h
         )

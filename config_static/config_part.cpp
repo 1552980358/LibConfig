@@ -4,7 +4,7 @@ config_part::config_part(const string &title, config_part *prev) {
     _title = title;
     set_prev(prev);
     if (prev) {
-        prev->set_next(prev);
+        prev->set_next(this);
     }
 }
 
@@ -29,23 +29,29 @@ config_part *config_part::get_next() {
 }
 
 void config_part::add_value(const string &title, const string &value) {
-    _titles = (string *) realloc(_titles, ++_number * sizeof(string));
-    _values = (string *) realloc(_values, _number * sizeof(string));
-    _titles[_number - 1] = title;
-    _values[_number - 1] = value;
+    _values = get_head(new config_value(title, value, get_last(_values)));
 }
 
 string *config_part::get_value(const string &name) {
-    for (int i = 0; i < _number; ++i) {
-        if (_titles[i] == name) {
-            return get_value(i);
+    auto ptr = _values;
+    while (ptr) {
+        if (*ptr->get_value() == name) {
+            return ptr->get_value();
         }
+        ptr = ptr->get_next();
     }
     return nullptr;
 }
 
 string *config_part::get_value(const int &index) {
-    return index >= _number || index < 0 ? nullptr : &_values[index];
+    if (index >= cal_config_value_size(_values)) {
+        return nullptr;
+    }
+    auto *ptr = _values;
+    for (int i = 0; i < index; ++i) {
+        ptr = ptr->get_next();
+    }
+    return ptr->get_value();
 }
 
 config_part *get_head(config_part *part) {
