@@ -32,6 +32,10 @@ void config_part::add_value(const string &title, const string &value) {
     _values = get_head(new config_value(title, value, get_last(_values)));
 }
 
+config_value *config_part::get_values() {
+    return _values;
+}
+
 string *config_part::get_value(const string &name) {
     auto ptr = _values;
     while (ptr) {

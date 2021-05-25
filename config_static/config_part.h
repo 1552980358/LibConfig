@@ -34,6 +34,8 @@ public:
 
     void add_value(const string &, const string &);
 
+    config_value *get_values();
+
     string *get_value(const string &);
 
     string *get_value(const int &);
