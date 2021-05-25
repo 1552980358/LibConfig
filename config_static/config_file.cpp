@@ -60,6 +60,10 @@ void config_file::read_file() {
     read();
 }
 
+config_part *config_file::get_config_parts() {
+    return _config_parts;
+}
+
 config_part *config_file::get_config_part(const string &title) {
     auto *current = _config_parts;
     while (current) {

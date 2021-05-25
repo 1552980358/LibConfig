@@ -30,6 +30,8 @@ public:
 
     void read_file();
 
+    config_part *get_config_parts();
+
     config_part *get_config_part(const string &);
 
     int get_config_part_size();
