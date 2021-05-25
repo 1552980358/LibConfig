@@ -106,7 +106,7 @@ string get_config_part_value_value(const string &str) {
     if (str.find('=') == -1) {
         return "";
     }
-    return cut_value(str.substr(str.find('=')));
+    return cut_value(str.substr(str.find('=') + 1));
 }
 
 string cut_value(const string &str) {
