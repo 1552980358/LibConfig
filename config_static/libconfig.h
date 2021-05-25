@@ -7,8 +7,4 @@ config_file *read_config(const char *);
 
 config_file *read_config(const string &);
 
-config_file *read_config(const char *, const bool &);
-
-config_file *read_config(const string &, const bool &);
-
 #endif //LIBCONFIG_LIBCONFIG_H

@@ -17,17 +17,17 @@ string cut_value(const string &);
 int count_config_parts(config_part *);
 
 // Constructors
-config_file::config_file(const bool &read) { if (read) read_file(); }
+config_file::config_file() = default;
 
-config_file::config_file(): config_file(false) {}
+config_file::config_file(const string &str) {
+    set_path(str);
+    read_file();
+}
 
-config_file::config_file(const string &str): config_file(str, true) {}
-
-config_file::config_file(const char *c_str): config_file(c_str, true) {}
-
-config_file::config_file(const string &str, const bool &read): config_file(read) { set_path(str); }
-
-config_file::config_file(const char *c_str, const bool &read): config_file(read) { set_path(c_str); }
+config_file::config_file(const char *c_str) {
+    set_path(c_str);
+    read_file();
+}
 
 /** Class defined functions **/
 void config_file::set_path(const string &str) {
@@ -72,17 +72,7 @@ config_part *config_file::get_config_part(const string &title) {
 }
 
 int config_file::get_config_part_size() {
-    _config_parts_size = count_config_parts(_config_parts);
-    return _config_parts_size;
-}
-
-string *config_file::get_config_part_titles() {
-    get_config_part_size();
-    auto *titles = (string *) malloc(_config_parts_size * sizeof(string));
-    for (int i = 0; i < _config_parts_size; ++i) {
-        titles[i] = _config_parts[i].get_title();
-    }
-    return titles;
+    return count_config_parts(_config_parts);
 }
 
 // Static .cpp internal functions
@@ -102,7 +92,7 @@ bool is_new_part(const string &str) {
 }
 
 string get_config_part_name(const string &str) {
-    return str.substr(str.find('['), str.find(']') - str.find('['));
+    return str.substr(str.find('[') + 1, str.find(']') - str.find('[') - 1);
 }
 
 string get_config_part_value_title(const string &str) {
@@ -122,23 +112,18 @@ string get_config_part_value_value(const string &str) {
 string cut_value(const string &str) {
     auto tmp = string(str);
     if (str_starts_with(str, ' ')) {
-        int i = 1;
-        while (i < tmp.length()) {
-            if (tmp[i] != ' ') {
+        for (int i = 0; i < tmp.length(); ++i) {
+            if (tmp[i] != ' '){
                 tmp = tmp.substr(i);
                 break;
             }
-            i++;
         }
     }
-    if (str_ends_with(str, ' ')) {
-        int i = (int) tmp.length();
-        while (i > 0) {
-            if (str[i] != ' ') {
-                tmp = str.substr(0, i);
-                break;
+    if (str_ends_with(tmp, ' ')) {
+        for (int i = tmp.length(); i > -1 ; --i) {
+            if (tmp[i] != ' ') {
+                return tmp.substr(0, i + 1);
             }
-            i--;
         }
     }
     return tmp;
@@ -147,9 +132,9 @@ string cut_value(const string &str) {
 int count_config_parts(config_part *part) {
     auto count = 0;
     auto *current = part;
-    while (part) {
+    while (current) {
         count++;
-        current->get_next();
+        current = current->get_next();
     }
     return count;
 }
