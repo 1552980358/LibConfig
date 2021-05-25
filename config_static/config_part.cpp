@@ -35,7 +35,7 @@ void config_part::add_value(const string &title, const string &value) {
 string *config_part::get_value(const string &name) {
     auto ptr = _values;
     while (ptr) {
-        if (*ptr->get_value() == name) {
+        if (*ptr->get_title() == name) {
             return ptr->get_value();
         }
         ptr = ptr->get_next();
