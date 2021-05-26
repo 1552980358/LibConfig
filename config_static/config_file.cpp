@@ -96,7 +96,7 @@ bool is_new_part(const string &str) {
 }
 
 string get_config_part_name(const string &str) {
-    return str.substr(str.find('[') + 1, str.find(']') - str.find('[') - 1);
+    return cut_value(str.substr(str.find('[') + 1, str.find(']') - str.find('[') - 1));
 }
 
 string get_config_part_value_title(const string &str) {
