@@ -113,26 +113,6 @@ string get_config_part_value_value(const string &str) {
     return cut_value(str.substr(str.find('=') + 1));
 }
 
-string cut_value(const string &str) {
-    auto tmp = string(str);
-    if (str_starts_with(str, ' ')) {
-        for (int i = 0; i < tmp.length(); ++i) {
-            if (tmp[i] != ' '){
-                tmp = tmp.substr(i);
-                break;
-            }
-        }
-    }
-    if (str_ends_with(tmp, ' ')) {
-        for (int i = tmp.length(); i > -1 ; --i) {
-            if (tmp[i] != ' ') {
-                return tmp.substr(0, i + 1);
-            }
-        }
-    }
-    return tmp;
-}
-
 int count_config_parts(config_part *part) {
     auto count = 0;
     auto *current = part;
