@@ -10,4 +10,6 @@ bool str_ends_with(const string &str, char c);
 
 string cut_value(const string &);
 
+string remove_tab(const string &);
+
 #endif //CONFIG_STATIC_UTILS_H
