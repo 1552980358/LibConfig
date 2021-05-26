@@ -49,7 +49,7 @@ config_part *config_file::read() {
     string line;
     config_part *current = nullptr;
     while (file_stream.peek() != EOF && getline(file_stream, line)) {
-        current = analysis_line(line, current);
+        current = analysis_line(remove_tab(line), current);
     }
     _config_parts = get_head(current);
     return _config_parts;
