@@ -35,3 +35,11 @@ string cut_value(const string &str) {
     }
     return tmp;
 }
+
+string remove_tab(const string &str) {
+    string tmp;
+    for (char i : str) {
+        tmp += i == '\t' ? ' ' : i;
+    }
+    return tmp;
+}
