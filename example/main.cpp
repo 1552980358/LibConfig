@@ -3,8 +3,11 @@ using std::cout;
 using std::endl;
 #include <libconfig.h>
 
-int main() {
+extern "C" {
+#include "test.h"
+}
 
+void test_cpp() {
     auto file = config_file("config.txt");
     auto *part = file.get_config_parts();
     while (part) {
@@ -16,5 +19,10 @@ int main() {
         }
         part = part->get_next();
     }
+}
+
+int main() {
+    test_cpp();
+    test_c();
     return 0;
 }
