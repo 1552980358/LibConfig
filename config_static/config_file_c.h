@@ -1,7 +1,7 @@
 #ifndef CONFIG_STATIC_CONFIG_FILE_C_H
 #define CONFIG_STATIC_CONFIG_FILE_C_H
 
-void * read_config(const char *);
+void *read_config(const char *);
 
 void config_file_set_path(void *, const char *);
 
