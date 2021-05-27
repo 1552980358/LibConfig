@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 include_directories(library)
 link_directories(library)
-link_libraries(D:\\LibConfig\\example\\library\\libconfig_static.a)
+link_libraries(libconfig_static.a)
 
 add_executable(example main.cpp test.c test.h)
 
