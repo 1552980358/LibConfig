@@ -1,7 +1,9 @@
+extern "C" {
 #include "config_file_c.h"
+}
 #include "config_file.h"
 
-void * read_config(const char *c) {
+void *read_config(const char *c) {
     return new config_file(c);
 }
 
