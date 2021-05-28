@@ -8,6 +8,16 @@ config_part::config_part(const string &title, config_part *prev) {
     }
 }
 
+config_part::config_part(const string &path) {
+    _type = CONFIG_PART_READ_FILE;
+    _title = path;
+}
+
+config_part::config_part(const char *path) {
+    _type = CONFIG_PART_READ_FILE;
+    _title = path;
+}
+
 string config_part::get_title() {
     return _title;
 }
