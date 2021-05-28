@@ -1,5 +1,14 @@
 #include "config_part.h"
 
+#include <string>
+using std::getline;
+#include <fstream>
+using std::ifstream;
+
+#include "utils.h"
+
+config_value *read_config_file(const string &);
+
 config_part::config_part(const string &title, config_part *prev) {
     _title = title;
     set_prev(prev);
@@ -68,6 +77,17 @@ string *config_part::get_value(const int &index) {
     return ptr->get_value();
 }
 
+config_value *config_part::read() {
+    if (_type != CONFIG_PART_READ_FILE) {
+        return nullptr;
+    }
+    return read_config_file(_title);
+}
+
+void config_part::read_file() {
+    read();
+}
+
 config_part *get_head(config_part *part) {
     if (!part) {
         return nullptr;
@@ -77,4 +97,24 @@ config_part *get_head(config_part *part) {
         tmp = tmp->get_prev();
     }
     return tmp;
+}
+
+bool is_config_value(const string &str) {
+    return !str.empty() && str.find('=') != -1;
+}
+
+config_value *read_config_file(const string &str) {
+    ifstream stream(str);
+    if (!stream) {
+        return nullptr;
+    }
+    string line;
+    config_value *current = nullptr;
+    while (stream.peek() != EOF && getline(stream, line)) {
+        if (!is_config_value(line)) {
+            continue;
+        }
+        current = new config_value(get_config_part_value_title(line), get_config_part_value_value(line), current);
+    }
+    return get_head(current);
 }

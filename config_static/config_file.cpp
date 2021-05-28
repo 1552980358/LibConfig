@@ -11,8 +11,6 @@ using std::ifstream;
 config_part *analysis_line(const string &str, config_part *part);
 bool is_new_part(const string &);
 string get_config_part_name(const string &);
-string get_config_part_value_title(const string &);
-string get_config_part_value_value(const string &);
 int count_config_parts(config_part *);
 
 // Constructors

@@ -27,9 +27,9 @@ public:
 
     explicit config_part(const string &, config_part *);
 
-    config_part(const string &);
+    explicit config_part(const string &);
 
-    config_part(const char *);
+    explicit config_part(const char *);
 
     string get_title();
 
@@ -48,6 +48,10 @@ public:
     string *get_value(const string &);
 
     string *get_value(const int &);
+
+    config_value *read();
+
+    void read_file();
 
 };
 
