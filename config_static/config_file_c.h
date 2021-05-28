@@ -1,17 +1,19 @@
 #ifndef CONFIG_STATIC_CONFIG_FILE_C_H
 #define CONFIG_STATIC_CONFIG_FILE_C_H
 
-void *read_config(const char *);
+#include "type.h"
 
-void config_file_set_path(void *, const char *);
+config_file_t read_config(const char *);
 
-void config_file_read_file(void *);
-void *config_file_read(void *);
+void config_file_set_path(config_file_t, const char *);
 
-void *config_file_get_config_parts(void *);
+void config_file_read_file(config_file_t);
+config_file_t config_file_read(config_file_t);
 
-void *config_file_get_config_part(void *, const char *title);
+config_part_t config_file_get_config_parts(config_file_t);
 
-int config_file_get_config_part_size(void *);
+config_part_t config_file_get_config_part(config_file_t, const char *title);
+
+int config_file_get_config_part_size(config_file_t);
 
 #endif //CONFIG_STATIC_CONFIG_FILE_C_H
