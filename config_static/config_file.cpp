@@ -98,20 +98,6 @@ string get_config_part_name(const string &str) {
     return cut_value(str.substr(str.find('[') + 1, str.find(']') - str.find('[') - 1));
 }
 
-string get_config_part_value_title(const string &str) {
-    if (str.find('=') == -1) {
-        return "";
-    }
-    return cut_value(str.substr(0, str.find('=')));
-}
-
-string get_config_part_value_value(const string &str) {
-    if (str.find('=') == -1) {
-        return "";
-    }
-    return cut_value(str.substr(str.find('=') + 1));
-}
-
 int count_config_parts(config_part *part) {
     auto count = 0;
     auto *current = part;

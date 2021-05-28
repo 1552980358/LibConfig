@@ -43,3 +43,17 @@ string remove_tab(const string &str) {
     }
     return tmp;
 }
+
+string get_config_part_value_title(const string &str) {
+    if (str.find('=') == -1) {
+        return "";
+    }
+    return cut_value(str.substr(0, str.find('=')));
+}
+
+string get_config_part_value_value(const string &str) {
+    if (str.find('=') == -1) {
+        return "";
+    }
+    return cut_value(str.substr(str.find('=') + 1));
+}

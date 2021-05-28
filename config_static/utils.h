@@ -12,4 +12,8 @@ string cut_value(const string &);
 
 string remove_tab(const string &);
 
+string get_config_part_value_title(const string &);
+
+string get_config_part_value_value(const string &);
+
 #endif //CONFIG_STATIC_UTILS_H
