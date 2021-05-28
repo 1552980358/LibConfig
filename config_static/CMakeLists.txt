@@ -4,7 +4,7 @@ project(config_static)
 set(CMAKE_CXX_STANDARD 20)
 
 add_library(config_static
-        libconfig.cpp libconfig.h
+        libconfig.h
         config_part.cpp config_part.h
         config_file.cpp config_file.h
         utils.cpp utils.h
