@@ -13,6 +13,17 @@
 - Modify config in memory and write to config file
 - More complex scene of config support
 
+## Compile environment
+- CUI, with CMake
+- Clion
+  - Cygwin
+  - MingW64
+  - WSL 2.0
+- Visual Studio
+
+## Support platform
+- All platform with C and C++ compiler
+
 ## Config file format
 
 - Config Part
