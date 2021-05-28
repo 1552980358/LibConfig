@@ -6,9 +6,10 @@
 
 ## Language support
 - C++
+- C
 
 ## Future maintenance
-- Support C
+- ~Support C~
 - Modify config in memory and write to config file
 - More complex scene of config support
 
