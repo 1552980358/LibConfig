@@ -13,6 +13,11 @@
 - Modify config in memory and write to config file
 - More complex scene of config support
 
+## Recommanded C and C++ Standard
+- The latest standard, i.e.
+  - C++20
+  - C11
+
 ## Compile environment
 - CUI, with CMake
 - Clion
