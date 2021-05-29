@@ -53,3 +53,35 @@ int config_part_value_index_length(config_part_t ptr, int index) {
 void config_part_get_value_index(config_part_t ptr, int index, char *value) {
     strcpy(value, ((config_part *) ptr)->get_value(index)->c_str());
 }
+
+char *config_part_get_value_title_char(config_part_t ptr, const char *title, int *size) {
+    auto str = ((config_part *) ptr)->get_value(title);
+    if (!str) {
+        if (size) {
+            *size = -1;
+        }
+        return nullptr;
+    }
+    if (size) {
+        *size = (int) str->size() + 1;
+    }
+    auto value = (char *) malloc((int) str->size() + 1);
+    strcpy(value, str->c_str());
+    return value;
+}
+
+char *config_part_get_value_index_char(config_part_t ptr, const int &index, int *size) {
+    auto str = ((config_part *) ptr)->get_value(index);
+    if (!str) {
+        if (size) {
+            *size = -1;
+        }
+        return nullptr;
+    }
+    if (size) {
+        *size = (int) str->size() + 1;
+    }
+    auto value = (char *) malloc((int) str->size() + 1);
+    strcpy(value, str->c_str());
+    return value;
+}

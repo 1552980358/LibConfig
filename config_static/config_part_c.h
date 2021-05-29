@@ -27,4 +27,8 @@ int config_part_value_index_length(config_part_t, int);
 
 void config_part_get_value_index(config_part_t, int, char *);
 
+char *config_part_get_value_title_char(config_part_t, const char *, int *);
+
+char *config_part_get_value_index_char(config_part_t, const int &, int *) ;
+
 #endif //CONFIG_STATIC_CONFIG_PART_C_H
