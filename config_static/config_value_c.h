@@ -23,4 +23,8 @@ config_value_t config_value_get_next(config_value_t);
 
 void config_value_set_next(config_value_t, config_value_t);
 
+char *config_value_get_title_char(config_value_t, int *);
+
+char *config_value_get_value_char(config_value_t, int *);
+
 #endif //CONFIG_STATIC_CONFIG_VALUE_C_H

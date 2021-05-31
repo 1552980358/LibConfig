@@ -44,4 +44,34 @@ void config_value_set_next(config_value_t ptr, config_value_t next) {
     ((config_value *) ptr)->set_next((config_value *) next);
 }
 
-#include "config_value.h"
+char *config_value_get_title_char(config_value_t ptr, int *size) {
+    auto title_str = ((config_value *) ptr)->get_title();
+    if (!title_str) {
+        if (size) {
+            *size = -1;
+        }
+        return nullptr;
+    }
+    if (size) {
+        *size = (int) title_str->size() + 1;
+    }
+    auto title = (char *) malloc((title_str->size() + 1) * sizeof(char));
+    strcpy(title, title_str->c_str());
+    return title;
+}
+
+char *config_value_get_value_char(config_value_t ptr, int *size) {
+    auto value_str = ((config_value *) ptr)->get_title();
+    if (!value_str) {
+        if (size) {
+            *size = -1;
+        }
+        return nullptr;
+    }
+    if (size) {
+        *size = (int) value_str->size() + 1;
+    }
+    auto value = (char *) malloc((value_str->size() + 1) * sizeof(char));
+    strcpy(value, value_str->c_str());
+    return value;
+}
